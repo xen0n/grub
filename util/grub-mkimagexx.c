@@ -61,7 +61,7 @@
 #endif
 #endif
 
-#define RELOC_STACK_MAX 1024
+#define RELOC_STACK_MAX 16
 
 /* These structures are defined according to the CHRP binding to IEEE1275,
    "Client Program Format" section.  */
