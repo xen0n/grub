@@ -29,29 +29,28 @@ VARIABLE (grub_efi_loongarch64_reset_system_addr)
 	.dword		0
 
 reset_system:
-	bl		1f
 	move		$a1, $zero
-1:
-	ld.d		$t8, $ra, -16
 	move		$a2, $zero
-	jr		$t8
 	move		$a3, $zero
+	la		$t8, grub_efi_loongarch64_reset_system_addr
+	ld.d		$t8, $t8, 0
+	jr		$t8
 
 FUNCTION(grub_efi_loongarch64_reset_cold)
-	b		reset_system
 	li.w		$a0, 0
+	b		reset_system
 
 FUNCTION(grub_efi_loongarch64_reset_warm)
-	b		reset_system
 	li.w		$a0, 1
+	b		reset_system
 
 FUNCTION(grub_efi_loongarch64_reset_shutdown)
-	b		reset_system
 	li.w		$a0, 2
+	b		reset_system
 
 FUNCTION(grub_efi_loongarch64_reset_suspend)
-	b		reset_system
 	li.w		$a0, 3
+	b		reset_system
 
 VARIABLE (grub_efi_loongarch64_reset_end)
 
